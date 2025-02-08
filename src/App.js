@@ -14,10 +14,10 @@ function App() {
   <BrowserRouter>
     <AuthProvider>
         <Routes>
+          <Route path='' element={<Login />} />
           <Route path='/*' element={<Layout /> }> 
-              <Route path='/' element={<Login />} />
-              <Route path='/anasayfa' element={<Home />} />
-              <Route path='/profil' element={<Profile />} />
+              <Route path='anasayfa' element={<Home />} />
+              <Route path='profil' element={<Profile />} />
             </Route>
         </Routes>
     </AuthProvider>
