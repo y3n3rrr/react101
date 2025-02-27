@@ -19,12 +19,12 @@ export default function Profile() {
                       src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
                       alt="Generic placeholder image"
                       className="img-fluid"
-                      style={{ width: 180, borderRadius: 10 }}
+                      style={{ width: 200, borderRadius: 10 }}
                     />
                   </div>
                   <div className="flex-grow-1 ms-3">
-                    <h5 className="mb-1">{auth.user?.username}</h5>
-                    <p className="mb-2 pb-1">{auth.role}</p>
+                    <h5 className="mb-1">{auth.user?.username ?? '-'}</h5>
+                    <p className="mb-2 pb-1">{auth.role ?? '-'}</p>
                       <div>
                    <div style={{   display:'flex',  gap: "12px"}}>
                     <label className='fw-bold'>E-Mail:</label>

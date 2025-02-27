@@ -19,7 +19,6 @@ export default function Login() {
 
 
   const handleLogin = () => {
-
     if (username == "admin" && password == "123") {
       auth.setUser({
         username:"Superman",
@@ -64,7 +63,7 @@ export default function Login() {
                 </label>
               </div>
               <div className="d-grid">
-                <button type="button" className="btn btn-secondary" onClick={handleLogin}>GİRİŞ</button>
+                <button type="button" className="btn btn-secondary" onClick={()=> handleLogin()}>GİRİŞ</button>
               </div>
             </form>
           </div>
