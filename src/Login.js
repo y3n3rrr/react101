@@ -36,7 +36,7 @@ export default function Login() {
       <div className="row justify-content-center mt-5">
         <div className="card shadow">
           <div className="card-title text-center border-bottom">
-            <h2 className="p-3">KAYIT</h2>
+            <h2 className="p-3">KAYIT1</h2>
           </div>
           <div className="card-body">
             <form>
