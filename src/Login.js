@@ -20,13 +20,12 @@ export default function Login() {
 
   const handleLogin = () => {
 
-    console.log(auth)
-
     if (username == "admin" && password == "123") {
       auth.setUser({
-        username,
+        username:"Superman",
       });
-      navigate('/anasayfa')
+      auth.setRole("Admin");
+      navigate('/home')
     }
     else {
       alert('Kullanici bulunamadi')

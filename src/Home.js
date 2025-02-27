@@ -7,8 +7,7 @@ export default function Home() {
 
     return (
         <div>
-    
-            Hosgeldin, {auth.user.username}
+            Hosgeldin, {auth.user?.username}
         </div>
     )
 }

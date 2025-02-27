@@ -5,7 +5,7 @@ import Navbar from './Navbar'
 export default function Layout() {
   return (
 <div class="container-fluid">
-<Navbar />
+  <Navbar />
   <Outlet />
 </div>
   )

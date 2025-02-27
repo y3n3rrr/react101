@@ -15,9 +15,10 @@ function App() {
     <AuthProvider>
         <Routes>
           <Route path='' element={<Login />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/*' element={<Layout /> }> 
-              <Route path='anasayfa' element={<Home />} />
-              <Route path='profil' element={<Profile />} />
+              <Route path='home' element={<Home />} />
+              <Route path='profile' element={<Profile />} />
             </Route>
         </Routes>
     </AuthProvider>
