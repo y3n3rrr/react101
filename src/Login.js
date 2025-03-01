@@ -27,10 +27,16 @@ export default function Login() {
 
 
   const handleLogin = async () => {
-    const response = await axios.post('https://localhost:7243/WeatherForecast', {
-        username: username,
-        password: password,
-    });
+    if (username == "admin" && password == "123") {
+      auth.setUser({
+        username:"Superman",
+      });
+      auth.setRole("Admin");
+      navigate('/home')
+    }
+    else {
+      alert('Kullanici bulunamadi')
+    }
   }
 
   const login = useGoogleLogin({
