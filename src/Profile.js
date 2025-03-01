@@ -1,9 +1,10 @@
 import React from 'react'
 import { useAuth } from './hooks/AuthContext';
+import axios from 'axios';
 
 export default function Profile() {
   const auth = useAuth();
-  
+
   return (
     <div>
       <section
@@ -16,7 +17,7 @@ export default function Profile() {
                 <div className="d-flex">
                   <div className="flex-shrink-0">
                     <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                      src={auth.user?.picture}
                       alt="Generic placeholder image"
                       className="img-fluid"
                       style={{ width: 200, borderRadius: 10 }}
@@ -24,37 +25,37 @@ export default function Profile() {
                   </div>
                   <div className="flex-grow-1 ms-3">
                     <h5 className="mb-1">{auth.user?.username ?? '-'}</h5>
-                    <p className="mb-2 pb-1">{auth.role ?? '-'}</p>
+                    <p className="mb-2 pb-1">{auth.user?.role ?? '-'}</p>
                       <div>
                    <div style={{   display:'flex',  gap: "12px"}}>
                     <label className='fw-bold'>E-Mail:</label>
                     <div>
-                      xxx@gmail.com
+                      {auth.user?.email ?? '-'}
                     </div>
                    </div>
                    <div style={{   display:'flex',  gap: "12px"}}>
                     <label className='fw-bold'>Age:</label>
                     <div>
-                      35
+                    {auth.user?.age ?? '-'}
                     </div>
                    </div>
                    <div style={{   display:'flex',  gap: "12px"}}>
                     <label className='fw-bold'>Gender:</label>
                     <div>
-                      Male
+                    {auth.user?.gender ?? '-'}
                     </div>
                    </div>
                    <div style={{   display:'flex',  gap: "12px"}}>
                     <label className='fw-bold'>Address:</label>
                     <div>
-                      Ankara Cankaya
+                    {auth.user?.address ?? '-'}
                     </div>
                    </div>
                     </div>
                     <div class="btn-group" role="group" style={{display:'flex', justifyContent:'space-around', gap:"20px"}} aria-label="Basic mixed styles example">
-  <button type="button" class="btn btn-success">Send Message</button>
-  <button type="button" class="btn btn-warning">Update</button>
-</div>
+                      <button type="button" class="btn btn-success">Send Message</button>
+                      <button type="button" class="btn btn-warning">Update</button>
+                    </div>
                   </div>
                 </div>
               </div>
