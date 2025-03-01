@@ -48,7 +48,7 @@ export default function Login() {
               </div>
               <div className="mb-4">
                 <label htmlFor="password" className="form-label">
-                  Şifre
+                  Password
                 </label>
                 <input type="password" className="form-control" id="password" onChange={(e) => onChangePassword(e)} />
               </div>
