@@ -42,7 +42,7 @@ export default function Login() {
             <form>
               <div className="mb-4">
                 <label htmlFor="username" className="form-label">
-                  Kullanıcı Adı
+                  Username
                 </label>
                 <input type="text" className="form-control" id="username" onChange={(e) => onChangeUsername(e)} autoComplete='off' />
               </div>
