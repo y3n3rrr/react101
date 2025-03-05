@@ -5,6 +5,9 @@ import { useGoogleLogin, googleLogout } from '@react-oauth/google';
 import axios from 'axios';
 import './Login.css'
 
+
+
+
 export default function Login() {
 
     const [ user, setUser ] = useState([]);
@@ -15,6 +18,13 @@ export default function Login() {
   const auth = useAuth()
 
   const navigate = useNavigate();
+
+  
+  const handlesignup = () => {
+    navigate('/Signup');  
+     
+  
+   };
 
   const onChangeUsername = (e) => {
     setUsername(e.target.value)
@@ -27,17 +37,14 @@ export default function Login() {
 
 
   const handleLogin = async () => {
-    if (username == "admin" && password == "123") {
-      auth.setUser({
-        username:"Superman",
-      });
-      auth.setRole("Admin");
-      navigate('/home')
-    }
-    else {
-      alert('Kullanici bulunamadi')
-    }
+    const response = await axios.post('https://localhost:7243/WeatherForecast', {
+        username: username,
+        password: password,
+    });
   }
+
+ 
+      
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
@@ -115,6 +122,9 @@ useEffect(
               </div>
               <div className="d-grid buttonContainer">
                 <button type="button" className="btn btn-secondary" onClick={()=> handleLogin()}>Sign In</button>
+
+                <button type="button" className="btn btn-secondary" onClick={()=> handlesignup()}>Sign Up</button>
+                
                 <button type="button" class="login-with-google-btn" onClick={()=> login()}> Sign in with Google </button>
               </div>
             </form>

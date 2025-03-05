@@ -6,6 +6,7 @@ import Home from './Home'
 import Login from './Login'
 import Profile from './Profile'
 import Layout from './Layout'
+import Signup from './Signup'
 import { AuthProvider } from './hooks/AuthContext'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
@@ -16,6 +17,7 @@ function App() {
     <AuthProvider>
         <Routes>
           <Route path='/login' element={<Login />} />
+          <Route path='/Signup' element={<Signup />} />
           <Route path='/' element={<Layout /> }> 
               <Route path='home' element={<Home />} />
               <Route path='profile' element={<Profile />} />
