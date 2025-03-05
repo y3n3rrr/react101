@@ -13,8 +13,8 @@ export default function Login() {
     const [ user, setUser ] = useState([]);
 
 
-  const [username, setUsername] = useState("admin")
-  const [password, setPassword] = useState("123")
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
   const auth = useAuth()
 
   const navigate = useNavigate();
@@ -37,10 +37,22 @@ export default function Login() {
 
 
   const handleLogin = async () => {
-    const response = await axios.post('https://localhost:7243/WeatherForecast', {
-        username: username,
+    const response = await axios.post('https://localhost:7284/Account/Login', {
+        email: username,
         password: password,
     });
+
+    
+    const {address, email, fullName, gender, id, isactive, username: _username} = response.data
+    
+   
+    auth.setUser({email,
+      given_name:fullName,
+      role: "Admin"
+    });
+
+    navigate('/home')
+
   }
 
  
@@ -102,13 +114,13 @@ useEffect(
                 <label htmlFor="username" className="form-label">
                   Username
                 </label>
-                <input type="text" value="admin" className="form-control" id="username" onChange={(e) => onChangeUsername(e)} autoComplete='off' />
+                <input type="text" value={username} className="form-control" id="username" onChange={(e) => onChangeUsername(e)} autoComplete='off' />
               </div>
               <div className="mb-4">
                 <label htmlFor="password" className="form-label">
                   Password
                 </label>
-                <input type="password" value="123" className="form-control" id="password" onChange={(e) => onChangePassword(e)} />
+                <input type="password" value={password} className="form-control" id="password" onChange={(e) => onChangePassword(e)} />
               </div>
               <div className="mb-4">
                 <input
