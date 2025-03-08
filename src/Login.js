@@ -5,16 +5,26 @@ import { useGoogleLogin, googleLogout } from '@react-oauth/google';
 import axios from 'axios';
 import './Login.css'
 
+
+
+
 export default function Login() {
 
     const [ user, setUser ] = useState([]);
 
 
-  const [username, setUsername] = useState("admin")
-  const [password, setPassword] = useState("123")
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
   const auth = useAuth()
 
   const navigate = useNavigate();
+
+  
+  const handlesignup = () => {
+    navigate('/Signup');  
+     
+  
+   };
 
   const onChangeUsername = (e) => {
     setUsername(e.target.value)
@@ -27,17 +37,26 @@ export default function Login() {
 
 
   const handleLogin = async () => {
-    if (username == "admin" && password == "123") {
-      auth.setUser({
-        username:"Superman",
-      });
-      auth.setRole("Admin");
-      navigate('/home')
-    }
-    else {
-      alert('Kullanici bulunamadi')
-    }
+    const response = await axios.post('https://localhost:7284/Account/Login', {
+        email: username,
+        password: password,
+    });
+
+    
+    const {address, email, fullName, gender, id, isactive, username: _username} = response.data
+    
+   
+    auth.setUser({email,
+      given_name:fullName,
+      role: "Admin"
+    });
+
+    navigate('/home')
+
   }
+
+ 
+      
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
@@ -95,13 +114,13 @@ useEffect(
                 <label htmlFor="username" className="form-label">
                   Username
                 </label>
-                <input type="text" value="admin" className="form-control" id="username" onChange={(e) => onChangeUsername(e)} autoComplete='off' />
+                <input type="text" value={username} className="form-control" id="username" onChange={(e) => onChangeUsername(e)} autoComplete='off' />
               </div>
               <div className="mb-4">
                 <label htmlFor="password" className="form-label">
                   Password
                 </label>
-                <input type="password" value="123" className="form-control" id="password" onChange={(e) => onChangePassword(e)} />
+                <input type="password" value={password} className="form-control" id="password" onChange={(e) => onChangePassword(e)} />
               </div>
               <div className="mb-4">
                 <input
@@ -115,6 +134,9 @@ useEffect(
               </div>
               <div className="d-grid buttonContainer">
                 <button type="button" className="btn btn-secondary" onClick={()=> handleLogin()}>Sign In</button>
+
+                <button type="button" className="btn btn-secondary" onClick={()=> handlesignup()}>Sign Up</button>
+                
                 <button type="button" class="login-with-google-btn" onClick={()=> login()}> Sign in with Google </button>
               </div>
             </form>

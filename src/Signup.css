@@ -1,0 +1,11 @@
+.cardText {
+    border-radius: 25px;
+}
+
+.signupContainer {
+    background-color: #eee;
+    min-height: 100vh;
+    padding-top: 150px
+}
+
+
