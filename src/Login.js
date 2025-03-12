@@ -14,8 +14,8 @@ export default function Login() {
   const [user, setUser] = useState([]);
 
 
-  const [username, setUsername] = useState()
-  const [password, setPassword] = useState()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [loadingMessage, setLoadingMessage] = useState()
   const auth = useAuth()
@@ -48,41 +48,42 @@ export default function Login() {
     }
 
     try {
-      debugger
       const response = await axios.post(`${baseURL}/Account/Login`, {
         username,
         password,
       });
 
-      debugger
 
-      const { address, email, fullName, gender, id, isactive, username: _username, avatarUrl } = response.data
+      const { address, email, fullName, gender, id, isactive, username: _username, avatarUrl, name, surname, isEmailNotification, isTwoStepEnabled, phone, createdDate, modifiedDate } = response.data
 
-      
       auth.setUser({
+        id,
         email,
+        gender,
         avatarUrl,
         given_name: fullName,
         role: "Admin",
-        username:_username
+        username: _username,
+        name,
+        surname, 
+        isEmailNotification, 
+        isTwoStepEnabled, 
+        phone,
+        isactive,
+        address,
+        createdDate, 
+        modifiedDate 
       });
       setLoadingMessage('Login Successfull, you will be redirected to home page in 2 seconds')
       setIsLoading(false)
-setTimeout(() => {
-  
-  navigate('/home')
-}, 2000);
+      setTimeout(() => {
+        navigate('/home')
+      }, 2000);
     } catch (error) {
-      debugger
       setIsLoading(false)
       setLoadingMessage(error.response.data)
     }
-
-
-
   }
-
-
 
 
   const login = useGoogleLogin({
@@ -95,7 +96,7 @@ setTimeout(() => {
 
   useEffect(
     () => {
-      if (user) {
+      if (user.access_token) {
         axios
           .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
             headers: {
