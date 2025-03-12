@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAuth } from './hooks/AuthContext';
 
+
 export default function ProfileCard() {
     const auth = useAuth();
 
@@ -50,9 +51,9 @@ export default function ProfileCard() {
                 </div>
                </div>
                 </div>
-                <div class="btn-group" role="group" style={{display:'flex', justifyContent:'space-around', gap:"20px"}} aria-label="Basic mixed styles example">
-                  <button type="button" class="btn btn-success">Send Message</button>
-                  <button type="button" class="btn btn-warning">Update</button>
+                <div className="btn-group" role="group" style={{display:'flex', justifyContent:'space-around', gap:"20px"}} aria-label="Basic mixed styles example">
+                  <button type="button" className="btn btn-success">Send Message</button>
+                  <button type="button" className="btn btn-warning">Update</button>
                 </div>
               </div>
             </div>

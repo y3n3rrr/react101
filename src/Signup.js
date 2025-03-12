@@ -20,7 +20,6 @@ const navigate = useNavigate();
   const handleChange = (e) => {
     console.log("BASILAN TUS:", e.target.value)
     const { name, value, type, checked } = e.target;
-    debugger
     setFormData({
       ...formData,
       [name]: type === 'checkbox' ? checked : value,
@@ -96,7 +95,7 @@ useEffect(()=> {
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
-                      <div class="invalid-feedback">Please fill out this field.</div>
+                      <div className="invalid-feedback">Please fill out this field.</div>
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
                           <input
