@@ -54,25 +54,24 @@ export default function Login() {
       });
 
 
-      const { address, email, fullName, gender, id, isactive, username: _username, avatarUrl, name, surname, isEmailNotification, isTwoStepEnabled, phone, createdDate, modifiedDate } = response.data
-
+      const { address, email, fullName, gender, id, isactive, username: _username, avatarUrl, name, surname, isEmailNotification, isTwoStepEnabled, phone, createdDate, modifiedDate, roleId } = response.data
       auth.setUser({
         id,
         email,
         gender,
         avatarUrl,
         given_name: fullName,
-        role: "Admin",
         username: _username,
         name,
-        surname, 
-        isEmailNotification, 
-        isTwoStepEnabled, 
+        surname,
+        isEmailNotification,
+        isTwoStepEnabled,
         phone,
         isactive,
         address,
-        createdDate, 
-        modifiedDate 
+        createdDate,
+        modifiedDate,
+        roleId
       });
       setLoadingMessage('Login Successfull, you will be redirected to home page in 2 seconds')
       setIsLoading(false)
