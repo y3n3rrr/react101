@@ -1,6 +1,6 @@
 
-import React, { useEffect, useState } from 'react';
-import { data, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import './Signup.css'
 import axios from 'axios'
 
@@ -14,8 +14,8 @@ function Signup() {
     confirmPassword: '',
     terms: false,
   });
-  
-const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     console.log("BASILAN TUS:", e.target.value)
@@ -24,12 +24,12 @@ const navigate = useNavigate();
       ...formData,
       [name]: type === 'checkbox' ? checked : value,
     });
-    
+
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (formData.password !== formData.confirmPassword) {
       alert('Şifreler eşleşmiyor!');
       return;
@@ -40,20 +40,19 @@ const navigate = useNavigate();
       return;
     }
 
-    try
-    {
+    try {
       const response = await axios.post("https://localhost:7284/Account/RegisterUser", {
         ...formData
       })
-      if(response.status == 200){
+      if (response.status === 200) {
         alert(response.data);
-        navigate('/login');  
+        navigate('/login');
       }
-      else{
+      else {
         alert('Hata olustu');
       }
-    }catch(error) {
-      if(error.code == "ERR_BAD_REQUEST"){
+    } catch (error) {
+      if (error.code === "ERR_BAD_REQUEST") {
         alert(error.response.data);
       }
     }
@@ -62,11 +61,6 @@ const navigate = useNavigate();
   };
 
 
-
-useEffect(()=> {
-  console.log("new form data:", formData)
-},
-[formData])
 
   return (
     <section className='signupContainer'>
@@ -95,7 +89,7 @@ useEffect(()=> {
                       </div>
 
                       <div className="d-flex flex-row align-items-center mb-4">
-                      <div className="invalid-feedback">Please fill out this field.</div>
+                        <div className="invalid-feedback">Please fill out this field.</div>
                         <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
                           <input
@@ -196,7 +190,7 @@ useEffect(()=> {
                     <img
                       src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                       className="img-fluid"
-                      alt="Sample image"
+                      alt="Sample"
                     />
                   </div>
                 </div>
