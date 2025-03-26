@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { useAuth } from './hooks/AuthContext'
 import axios from 'axios'
 import moment from 'moment'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
+import { useAuth } from '../../../hooks/AuthContext';
 
 export default function ProfileContainer() {
   const auth = useAuth();
   const [selectedIndex, setSelectedIndex] = useState(0)
-
-
 
   return (
     <div>
@@ -161,7 +159,7 @@ const ProfileMenuContent = ({ selectedIndex }) => {
                   <input
                     type="tel"
                     className={`form-control ${errors.phone ? "is-invalid" : "is-valid"}`}
-                    {...register('phone', { required: true, maxLength: 10 })}
+                    {...register('phone', { required: true, maxLength: 14, pattern: /^\d+$/ })}
                   />
                 </div>
                 <div className="col-12">
