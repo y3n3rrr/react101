@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from './hooks/AuthContext'
+import { useAuth } from './AuthContext'
 import { Navigate, Outlet } from 'react-router-dom'
 
 export const PrivateRoute = () => {
@@ -13,7 +13,7 @@ export const PrivateRoute = () => {
 
 export const ProtectedRoute = ({ allowedRoles = [], children }) => {
     const auth = useAuth()
-    debugger
+
     if (allowedRoles.includes(auth.user.roleId)) {
         return children
     }

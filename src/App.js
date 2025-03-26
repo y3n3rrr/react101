@@ -1,16 +1,13 @@
-import { useState } from 'react'
-import Navbar from './Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Home from './Home'
-import Login from './Login'
-import Profile from './Profile'
-import Layout from './Layout'
-import Signup from './Signup'
+import Home from './pages/Home/Home'
+import Login from './pages/Login/Login'
+import { Profile } from './pages/Profile'
+import Layout from './pages/Navbar/Layout'
+import Signup from './pages/Signup/Signup'
 import { AuthProvider } from './hooks/AuthContext'
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { PrivateRoute, ProtectedRoute } from './PrivateRoute'
-import Unauthorized from './Unauthorized'
+import { PrivateRoute, ProtectedRoute } from './hooks/PrivateRoute'
+import Unauthorized from './components/unauthorized/Unauthorized'
 
 function App() {
   return (

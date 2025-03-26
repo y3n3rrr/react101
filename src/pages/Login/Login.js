@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import { data, useNavigate } from 'react-router-dom'
-import { useAuth } from './hooks/AuthContext'
+import { useAuth } from '../../hooks/AuthContext'
 import { useGoogleLogin, googleLogout } from '@react-oauth/google';
 import axios from 'axios';
+import { useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify';
 import './Login.css'
-import { baseURL } from './config';
+import { baseURL } from '../../utils/config';
 
 
 
 
 export default function Login() {
 
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      username: '',
+      password: '',
+    }
+  })
+
   const [user, setUser] = useState([]);
 
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [loadingMessage, setLoadingMessage] = useState()
   const auth = useAuth()
 
   const navigate = useNavigate();
@@ -25,32 +32,16 @@ export default function Login() {
 
   const handlesignup = () => {
     navigate('/Signup');
-
-
   };
 
-  const onChangeUsername = (e) => {
-    setUsername(e.target.value)
-  }
 
-  const onChangePassword = (e) => {
-    setPassword(e.target.value)
-  }
-
-
-
-  const handleLogin = async () => {
+  const handleLogin = async (data) => {
     setIsLoading(true)
-    setLoadingMessage()
-    if (!Boolean(username) || !Boolean(password)) {
-      setLoadingMessage('Ivalid username or password')
-      return
-    }
 
     try {
       const response = await axios.post(`${baseURL}/Account/Login`, {
-        username,
-        password,
+        username: data.username,
+        password: data.password,
       });
 
 
@@ -73,14 +64,18 @@ export default function Login() {
         modifiedDate,
         roleId
       });
-      setLoadingMessage('Login Successfull, you will be redirected to home page in 2 seconds')
+      toast("Login Successfull, you will be redirected to home page in 2 seconds", {
+        type: "success"
+      })
       setIsLoading(false)
       setTimeout(() => {
         navigate('/home')
       }, 2000);
     } catch (error) {
       setIsLoading(false)
-      setLoadingMessage(error.response.data)
+      toast(error.response.data, {
+        type: "error",
+      })
     }
   }
 
@@ -133,22 +128,33 @@ export default function Login() {
       <div className="row justify-content-center mt-5">
         <div className="card shadow">
           <div className="card-title text-center border-bottom">
-            <h2 className="p-3">{isLoading ? 'LOADING...' : loadingMessage ?? 'SIGN IN'}</h2>
+            <h2 className="p-3">{isLoading ?
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              : 'SIGN IN'}</h2>
 
           </div>
           <div className="card-body">
-            <form>
+            <form onSubmit={handleSubmit(handleLogin)}>
               <div className="mb-4">
                 <label htmlFor="username" className="form-label">
                   Username
                 </label>
-                <input type="text" value={username} className="form-control" id="username" onChange={(e) => onChangeUsername(e)} autoComplete='off' />
+                <input
+                  className={`form-control ${errors.username ? "is-invalid" : "is-valid"}`}
+                  id="username" autoComplete='off'
+                  {...register('username', { required: true, maxLength: 25 })}
+                />
               </div>
               <div className="mb-4">
                 <label htmlFor="password" className="form-label">
                   Password
                 </label>
-                <input type="password" value={password} className="form-control" id="password" onChange={(e) => onChangePassword(e)} />
+                <input type="password" className={`form-control ${errors.password ? "is-invalid" : "is-valid"}`}
+                  id="password"
+                  {...register('password', { required: true, maxLength: 25 })}
+                />
               </div>
               <div className="mb-4">
                 <input
@@ -161,7 +167,7 @@ export default function Login() {
                 </label>
               </div>
               <div className="d-grid buttonContainer">
-                <button type="button" className="btn btn-secondary" onClick={() => handleLogin()}>Sign In</button>
+                <button type="submit" className="btn btn-secondary" >Sign In</button>
 
                 <button type="button" className="btn btn-secondary" onClick={() => handlesignup()}>Sign Up</button>
 
@@ -171,6 +177,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
