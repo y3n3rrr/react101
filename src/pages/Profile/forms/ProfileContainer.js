@@ -4,7 +4,7 @@ import moment from 'moment'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import { useAuth } from '../../../hooks/AuthContext';
-import SecurityPage from '../../Profile/securityPage';
+import SecurityPage from '../../Profile/SecurityPage';
 
 
 export default function ProfileContainer() {
@@ -67,7 +67,6 @@ export default function ProfileContainer() {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   )
 }
@@ -93,6 +92,7 @@ const ProfileMenuContent = ({ selectedIndex }) => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.put(`https://localhost:7284/Account/UpdateUser/${auth.user?.id}`, data)
+      debugger
       if (response.status == 200) {
         toast("User profile updated successfully!", {
           type: "success"

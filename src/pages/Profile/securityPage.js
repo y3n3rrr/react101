@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useAuth } from  '../../hooks/AuthContext';
+import { useAuth } from '../../hooks/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import moment from 'moment';
@@ -9,7 +9,7 @@ export default function SecurityPage() {
   const auth = useAuth();
   const [is2FAEnabled, setIs2FAEnabled] = useState(auth.user?.isTwoStepEnabled);
   const [isPasswordChange, setIsPasswordChange] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, watch } = useForm();
 
   const handleEnable2FA = async () => {
     try {
@@ -54,6 +54,7 @@ export default function SecurityPage() {
       });
     }
   };
+  console.log('errors', errors);
 
   const onPasswordChangeSubmit = async (data) => {
     if (data.newPassword !== data.confirmPassword) {
@@ -62,6 +63,7 @@ export default function SecurityPage() {
       });
       return;
     }
+    debugger
 
     try {
       const response = await axios.post('https://localhost:7284/Account/ChangePassword', {
@@ -166,7 +168,14 @@ export default function SecurityPage() {
                         type="password"
                         className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
                         id="confirmPassword"
-                        {...register('confirmPassword', { required: 'Please confirm your new password.' })}
+                        {...register('confirmPassword', {
+                          required: 'Please confirm your new password.',
+                          validate: (val) => {
+                            if (watch('newPassword') != val) {
+                              return "Your passwords do no match";
+                            }
+                          },
+                        })}
                       />
                       {errors.confirmPassword && <div className="invalid-feedback">{errors.confirmPassword.message}</div>}
                     </div>
@@ -201,7 +210,6 @@ export default function SecurityPage() {
         </div>
       </div>
 
-      <ToastContainer />
     </div>
   );
 }
