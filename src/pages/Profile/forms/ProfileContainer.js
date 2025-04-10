@@ -173,7 +173,7 @@ const ProfileMenuContent = ({ selectedIndex }) => {
                   />
                 </div>
 
-                <div className="col-12" hidden="auth.user.roleId !== 2">
+                <div className="col-12" hidden={auth.user.roleId !== 1}>
                   <label className="form-label"  >Role</label>
                   <select {...register('roleId', { required: true, maxLength: 10 })} className={`form-select ${errors.roleId ? "is-invalid" : "is-valid"}`} aria-label="Default select example">
                     <option>Select User Role</option>
@@ -265,7 +265,7 @@ const ProfileMenuContent = ({ selectedIndex }) => {
     case 1:
       return (
         <div>
-           <SecurityPage />
+          <SecurityPage />
         </div>
       )
       break;
