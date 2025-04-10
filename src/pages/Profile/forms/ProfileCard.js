@@ -51,7 +51,7 @@ export default function ProfileCard() {
                 </div>
                </div>
                 </div>
-                <div className="btn-group" role="group" style={{display:'flex', justifyContent:'space-around', gap:"20px"}} aria-label="Basic mixed styles example">
+                <div className="btn-group" role="group" hidden="auth.user.roleId !== 2" style={{display:'flex', justifyContent:'space-around', gap:"20px"}} aria-label="Basic mixed styles example">
                   <button type="button" className="btn btn-success">Send Message</button>
                   <button type="button" className="btn btn-warning">Update</button>
                 </div>

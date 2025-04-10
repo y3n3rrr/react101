@@ -4,6 +4,8 @@ import moment from 'moment'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import { useAuth } from '../../../hooks/AuthContext';
+import SecurityPage from '../../Profile/securityPage';
+
 
 export default function ProfileContainer() {
   const auth = useAuth();
@@ -171,8 +173,8 @@ const ProfileMenuContent = ({ selectedIndex }) => {
                   />
                 </div>
 
-                <div className="col-12">
-                  <label className="form-label">Role</label>
+                <div className="col-12" hidden="auth.user.roleId !== 2">
+                  <label className="form-label"  >Role</label>
                   <select {...register('roleId', { required: true, maxLength: 10 })} className={`form-select ${errors.roleId ? "is-invalid" : "is-valid"}`} aria-label="Default select example">
                     <option>Select User Role</option>
                     <option value="1">Administrator</option>
@@ -263,7 +265,7 @@ const ProfileMenuContent = ({ selectedIndex }) => {
     case 1:
       return (
         <div>
-          Security page form...
+           <SecurityPage />
         </div>
       )
       break;

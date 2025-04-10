@@ -8,6 +8,7 @@ import { AuthProvider } from './hooks/AuthContext'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { PrivateRoute, ProtectedRoute } from './hooks/PrivateRoute'
 import Unauthorized from './components/unauthorized/Unauthorized'
+import SecurityPage from './pages/Profile/securityPage'
 
 function App() {
   return (
