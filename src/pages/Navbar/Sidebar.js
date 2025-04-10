@@ -3,6 +3,7 @@ import './Sidebar.css'
 
 export default function Sidebar() {
     return (
+        
         <div>
             {/*Main Navigation*/}
             <header>
