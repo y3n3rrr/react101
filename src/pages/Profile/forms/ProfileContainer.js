@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import { useForm } from 'react-hook-form'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useAuth } from '../../../hooks/AuthContext';
 import SecurityPage from '../../Profile/SecurityPage';
+import './ProfileContainer.css'
 
 
 export default function ProfileContainer() {
@@ -14,7 +15,7 @@ export default function ProfileContainer() {
   return (
     <div>
 
-      <div className="bg-light">
+      <div className="bg-light bg-light-content">
         <div className="container py-5">
           <div className="row">
             {/* Profile Header */}

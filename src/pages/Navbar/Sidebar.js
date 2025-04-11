@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
 import './Sidebar.css'
 
 export default function Sidebar() {
     return (
-        
+
         <div>
             {/*Main Navigation*/}
             <header>
@@ -78,13 +80,10 @@ export default function Sidebar() {
                                 <i className="fas fa-calendar fa-fw me-3" />
                                 <span>Calendar</span>
                             </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
+                            <Link to="/users" className="list-group-item list-group-item-action py-2 ripple">
                                 <i className="fas fa-users fa-fw me-3" />
                                 <span>Users</span>
-                            </a>
+                            </Link>
                             <a
                                 href="#"
                                 className="list-group-item list-group-item-action py-2 ripple"

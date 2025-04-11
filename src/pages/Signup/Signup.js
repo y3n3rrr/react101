@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 import './Signup.css'
 import axios from 'axios'
 
@@ -45,8 +46,13 @@ function Signup() {
         ...formData
       })
       if (response.status === 200) {
+        toast("Register Successfull, you will be redirected to login page in 2 seconds", {
+          type: "success"
+        })
         alert(response.data);
-        navigate('/login');
+        setTimeout(() => {
+          navigate('/login')
+        }, 2000);
       }
       else {
         alert('Hata olustu');
@@ -199,6 +205,7 @@ function Signup() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 }
