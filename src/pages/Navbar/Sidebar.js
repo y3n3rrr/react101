@@ -1,15 +1,34 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-
 import './Sidebar.css'
 
+
 export default function Sidebar() {
+ 
+
+    
+    const sidebarMenuIndex = ({ index, setIndex }) => {
     return (
+        <div>
+        {/*Main Navigation*/}
+        <header>
+            {/* Sidebar */}
+            <nav
+                id="sidebarMenu"
+                className="collapse d-lg-block sidebar collapse bg-white"
+            >
+                <div className="position-sticky">
+                    <div className="list-group list-group-flush mx-3 mt-4">
+                    <a className={`nav-link ${index == 0 ? "active" : ""}`} href="#" onClick={() => setIndex(0)}>
+          <i className="fas fa-user me-2" />
+          Main dashboard
+        </a>
 
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
-            {/*Main Navigation*/}
-            <header>
+       
+      </div>
+    
 
+                    </div>
+                </nav>
                 {/* Sidebar */}
                 {/* Navbar */}
                 <nav
@@ -317,4 +336,8 @@ export default function Sidebar() {
             </nav>
         </div>
     )
-}
+
+    }
+
+    return sidebarMenuIndex(1,() => {})
+} 
