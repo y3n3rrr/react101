@@ -8,12 +8,14 @@ import { ToastContainer } from 'react-toastify';
 export default function Layout() {
   const auth = useAuth();
 
-  if (auth.user.roleId === 1) {
+  console.log('checkpoint1', auth);
+
+  if (auth.user.roleId === 2) {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div class="row flex-nowrap">
-          <Sidebar />            {/*Main layout*/}
-          <main style={{ marginTop: 100 }} className="col-9 ">
+          <Sidebar />
+          <main style={{ marginTop: 100 }} className="col-auto col-md-9 col-xl-10 px-sm-10 px-0">
             <Outlet />
           </main>
           <ToastContainer />

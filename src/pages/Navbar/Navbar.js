@@ -14,8 +14,6 @@ export default function Navbar() {
     navigate({ pathname: '/login' })
   }
 
-  console.log('checkpoint1', auth);
-
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
