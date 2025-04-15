@@ -8,6 +8,8 @@ import { AuthProvider } from './hooks/AuthContext'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { PrivateRoute, ProtectedRoute } from './hooks/PrivateRoute'
 import Unauthorized from './components/unauthorized/Unauthorized'
+import SecurityPage from './pages/Profile/SecurityPage'
+import { Users } from './pages/Admin/Users'
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
                     <Profile />
                   </ProtectedRoute>
                 } />
+                <Route path='users' element={<Users />} />
               </Route>
             </Route>
           </Routes>

@@ -1,99 +1,15 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
 import './Sidebar.css'
 
 export default function Sidebar() {
     return (
-        <div>
+
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
             {/*Main Navigation*/}
             <header>
-                {/* Sidebar */}
-                <nav
-                    id="sidebarMenu"
-                    className="collapse d-lg-block sidebar collapse bg-white"
-                >
-                    <div className="position-sticky">
-                        <div className="list-group list-group-flush mx-3 mt-4">
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                                aria-current="true"
-                            >
-                                <i className="fas fa-tachometer-alt fa-fw me-3" />
-                                <span>Main dashboard</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple active"
-                            >
-                                <i className="fas fa-chart-area fa-fw me-3" />
-                                <span>Webiste traffic</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-lock fa-fw me-3" />
-                                <span>Password</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-chart-line fa-fw me-3" />
-                                <span>Analytics</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-chart-pie fa-fw me-3" />
-                                <span>SEO</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-chart-bar fa-fw me-3" />
-                                <span>Orders</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-globe fa-fw me-3" />
-                                <span>International</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-building fa-fw me-3" />
-                                <span>Partners</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-calendar fa-fw me-3" />
-                                <span>Calendar</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-users fa-fw me-3" />
-                                <span>Users</span>
-                            </a>
-                            <a
-                                href="#"
-                                className="list-group-item list-group-item-action py-2 ripple"
-                            >
-                                <i className="fas fa-money-bill fa-fw me-3" />
-                                <span>Sales</span>
-                            </a>
-                        </div>
-                    </div>
-                </nav>
+
                 {/* Sidebar */}
                 {/* Navbar */}
                 <nav
@@ -312,13 +228,93 @@ export default function Sidebar() {
                 {/* Navbar */}
             </header>
             {/*Main Navigation*/}
-            {/*Main layout*/}
-            <main style={{ marginTop: 58 }}>
-                <div className="container pt-4" />
-            </main>
-            {/*Main layout*/}
 
 
+            {/* Sidebar */}
+            <nav
+                id="sidebarMenu"
+                className="collapse d-lg-block sidebar collapse bg-white"
+            >
+                <div className="position-sticky">
+                    <div className="list-group list-group-flush mx-3 mt-4">
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                            aria-current="true"
+                        >
+                            <i className="fas fa-tachometer-alt fa-fw me-3" />
+                            <span>Main dashboard</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple active"
+                        >
+                            <i className="fas fa-chart-area fa-fw me-3" />
+                            <span>Webiste traffic</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-lock fa-fw me-3" />
+                            <span>Password</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-chart-line fa-fw me-3" />
+                            <span>Analytics</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-chart-pie fa-fw me-3" />
+                            <span>SEO</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-chart-bar fa-fw me-3" />
+                            <span>Orders</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-globe fa-fw me-3" />
+                            <span>International</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-building fa-fw me-3" />
+                            <span>Partners</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-calendar fa-fw me-3" />
+                            <span>Calendar</span>
+                        </a>
+                        <Link to="/users" className="list-group-item list-group-item-action py-2 ripple">
+                            <i className="fas fa-users fa-fw me-3" />
+                            <span>Users</span>
+                        </Link>
+                        <a
+                            href="#"
+                            className="list-group-item list-group-item-action py-2 ripple"
+                        >
+                            <i className="fas fa-money-bill fa-fw me-3" />
+                            <span>Sales</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
         </div>
     )
 }
