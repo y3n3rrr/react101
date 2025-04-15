@@ -4,7 +4,7 @@ import moment from 'moment'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify';
 import { useAuth } from '../../../hooks/AuthContext';
-import SecurityPage from '../../Profile/SecurityPage';
+import SecurityPage from '../SecurityPage';
 import './ProfileContainer.css'
 
 
