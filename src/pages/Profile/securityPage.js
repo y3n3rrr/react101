@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../hooks/AuthContext';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -63,7 +63,6 @@ export default function SecurityPage() {
       });
       return;
     }
-    debugger
 
     try {
       const response = await axios.post('https://localhost:7284/Account/ChangePassword', {

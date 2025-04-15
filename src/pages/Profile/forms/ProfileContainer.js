@@ -93,7 +93,6 @@ const ProfileMenuContent = ({ selectedIndex }) => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.put(`https://localhost:7284/Account/UpdateUser/${auth.user?.id}`, data)
-      debugger
       if (response.status == 200) {
         toast("User profile updated successfully!", {
           type: "success"

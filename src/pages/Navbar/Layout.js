@@ -11,18 +11,20 @@ export default function Layout() {
   if (auth.user.roleId === 1) {
     return (
       <div className="container-fluid">
-        <Sidebar />
-        <div className="container-xl">
-          <Outlet />
+        <div class="row flex-nowrap">
+          <Sidebar />            {/*Main layout*/}
+          <main style={{ marginTop: 100 }} className="col-9 ">
+            <Outlet />
+          </main>
+          <ToastContainer />
         </div>
-        <ToastContainer />
       </div>
     )
   }
 
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <Navbar />
       <Outlet />
       <ToastContainer />
