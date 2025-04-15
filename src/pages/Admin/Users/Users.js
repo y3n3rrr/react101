@@ -36,7 +36,6 @@ export default function Users() {
 
     const getAllUsers = async () => {
         const response = await axios.get(`https://localhost:7284/Account/GetUsers`)
-        debugger
         if (response.status == 200) {
             // todo list items
             setUsers(response.data)
