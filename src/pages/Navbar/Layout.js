@@ -13,7 +13,7 @@ export default function Layout() {
   if (auth.user.roleId === 2) {
     return (
       <div className="container">
-        <div class="row flex-nowrap">
+        <div className="row flex-nowrap">
           <Sidebar />
           <main style={{ marginTop: 100 }} className="col-auto col-md-9 col-xl-10 px-sm-10 px-0">
             <Outlet />

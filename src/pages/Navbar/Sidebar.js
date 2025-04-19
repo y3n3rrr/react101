@@ -27,7 +27,7 @@ export default function Sidebar() {
     ]
 
     return (
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
+        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
             {/*Main Navigation*/}
             <header>
                 {/* Sidebar */}
@@ -39,7 +39,7 @@ export default function Sidebar() {
                         <div className="list-group list-group-flush mx-3 mt-4">
                             {menuItems.map((item, index) => {
                                 return (
-                                    <Link to={item.to}
+                                    <Link key={`${item.text}_${index}`} to={item.to}
                                         className={`list-group-item list-group-item-action py-2 ripple ${index == currentIndex ? "active" : ""}`}
                                         onClick={() => setCurrentIndex(index)}>
                                         {item.icon}

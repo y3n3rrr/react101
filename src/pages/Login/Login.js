@@ -129,8 +129,8 @@ export default function Login() {
         <div className="card shadow">
           <div className="card-title text-center border-bottom">
             <h2 className="p-3">{isLoading ?
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
               : 'SIGN IN'}</h2>
 
