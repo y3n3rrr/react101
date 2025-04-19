@@ -38,6 +38,9 @@ export default function Navbar() {
               <Link className="nav-link" to="/home">Home</Link>
             </li>
             <li hidden={auth.user.roleId !== 1} className="nav-item">
+              <Link className="nav-link" to="/shopping">Foods</Link>
+            </li>
+            <li hidden={auth.user.roleId !== 1} className="nav-item">
               <Link className="nav-link" to="/profile">Profile</Link>
             </li>
           </ul>

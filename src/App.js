@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import { Profile } from './pages/Profile'
+import { Shopping } from './pages/Shopping'
 import Layout from './pages/Navbar/Layout'
 import Signup from './pages/Signup/Signup'
 import { AuthProvider } from './hooks/AuthContext'
@@ -31,6 +32,10 @@ function App() {
                   <ProtectedRoute allowedRoles={[1]}>
                     <Profile />
                   </ProtectedRoute>
+                } />
+
+                <Route path='shopping' element={
+                  <Shopping />
                 } />
 
                 <Route path='users' element={<Users />} />
