@@ -9,7 +9,7 @@ export default function Sidebar() {
     const [currentIndex, setCurrentIndex] = useState(0)
     const menuItems = [
         {
-            to: '/dashboard',
+            to: '/maindashboard',
             text: 'Main dashboard',
             icon: <i className="fas fa-tachometer-alt fa-fw me-3" />,
         },

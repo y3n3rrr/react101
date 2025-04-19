@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { baseURL } from '../../../utils/config';
 
 
 const PAGE_SIZE = 1
@@ -32,7 +33,7 @@ export default function Users() {
 
     const getAllUsers = async () => {
         setIsLoading(true)
-        const response = await axios.get(`https://localhost:7284/Account/GetUsers`)
+        const response = await axios.get(`${baseURL}/Account/GetUsers`)
         if (response.status == 200) {
             // todo list items
             setUsers(response.data)

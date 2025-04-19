@@ -10,6 +10,8 @@ import { PrivateRoute, ProtectedRoute } from './hooks/PrivateRoute'
 import Unauthorized from './components/unauthorized/Unauthorized'
 import SecurityPage from './pages/Profile/SecurityPage'
 import { Users } from './pages/Admin/Users'
+import WebsiteTraffic from './pages/Navbar/WebsiteTraffic'
+import MainDashboard from './pages/Navbar/MainDashboard'
 
 function App() {
   return (
@@ -23,11 +25,14 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route path='/' element={<Layout />}>
                 <Route path='home' element={<Home />} />
+                <Route path='maindashboard' element={<MainDashboard />} />
+                <Route path='websitetraffic' element={<WebsiteTraffic />} />
                 <Route path='profile' element={
                   <ProtectedRoute allowedRoles={[1]}>
                     <Profile />
                   </ProtectedRoute>
                 } />
+
                 <Route path='users' element={<Users />} />
               </Route>
             </Route>
