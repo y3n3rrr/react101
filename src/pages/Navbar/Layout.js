@@ -15,7 +15,7 @@ export default function Layout() {
       <div className="container">
         <div className="row flex-nowrap">
           <Sidebar />
-          <main style={{ marginTop: 100 }} className="col-auto col-md-9 col-xl-10 px-sm-10 px-0">
+          <main style={{ marginTop: 100, marginLeft:-85 }} className="col-auto col-md-9 col-xl-10 px-sm-10 px-0">
             <Outlet />
           </main>
           <ToastContainer />

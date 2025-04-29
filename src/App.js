@@ -13,6 +13,7 @@ import SecurityPage from './pages/Profile/SecurityPage'
 import { Users } from './pages/Admin/Users'
 import WebsiteTraffic from './pages/Navbar/WebsiteTraffic'
 import MainDashboard from './pages/Navbar/MainDashboard'
+import Details from './pages/Navbar/Details'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                 } />
 
                 <Route path='users' element={<Users />} />
+                <Route path='details' element={<Details />} />
               </Route>
             </Route>
           </Routes>

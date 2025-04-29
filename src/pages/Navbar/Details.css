@@ -1,0 +1,62 @@
+.containerDetails {
+    position: sticky;
+    background-color: aquamarine;
+    width: 100%;
+    display: inline-flex;
+}
+.containerDetailsLeft {
+    position: sticky;
+    background-color: rgb(168, 196, 57);
+    width: 33.3%;
+}
+.containerDetailsMiddle {
+    position: sticky;
+    background-color:rgb(116, 134, 228) ;
+    width: 33.3%;
+}
+.containerDetailsRight {
+    position: sticky;
+    background-color: rgb(213, 32, 83);
+    width: 33.4%;
+    margin-right: 0px;
+}
+.ToolbarWidget {
+    z-index: 99;
+    position: absolute;
+    bottom: 2px;
+    margin: 0;
+    font-size: 14px;
+    border: 1px solid #383838;
+    background: rgb(34 45 52 / 85%);
+    background: var(--themeBackground);
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 90%;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+    display: inline-block;
+}
+
+  
+  .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    color: #111010;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    margin-left: -60px; 
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .ToolbarWidget:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }

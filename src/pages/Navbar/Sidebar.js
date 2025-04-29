@@ -24,6 +24,11 @@ export default function Sidebar() {
             icon: <i className="fas fa-users fa-fw me-3" />,
         },
 
+       { to: '/details',
+        text: 'Details',
+        icon: <i className="fas fa-info fa-fw me-3" />,
+    },
+
     ]
 
     return (
