@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import './Categories.css'
+import ReactTooltip from "react-tooltip";
 export default function Categories({ icon, text, selectedCategory, setSelectedCategory }) {
 
+ 
 
     const categoryItems = [
         {
@@ -30,7 +32,22 @@ export default function Categories({ icon, text, selectedCategory, setSelectedCa
             id: 1,
             text: 'Drinks',
             icon: <i className="fas fa-chart-area fa-fw me-3" />,
-            subItems: []
+            subItems: [{
+                id: 3,
+                text: 'Water',
+                icon: <i className="fas fa-tachometer-alt fa-fw" />,
+            },
+            {
+                id: 4,
+                text: 'Mineral Water',
+                icon: <i className="fas fa-tachometer-alt fa-fw" />,
+            },
+            {
+                id: 5,
+                text: 'Energy Drinks',
+                icon: <i className="fas fa-tachometer-alt fa-fw" />,
+            }
+            ]
         },
         {
             id: 2,
@@ -63,6 +80,8 @@ export default function Categories({ icon, text, selectedCategory, setSelectedCa
                                         {item.icon} {item.text}
                                     </button>
                                 </h2>
+
+                                
                                 <div
                                     id={`categoryId_${item.id}`}
                                     className="accordion-collapse collapse"
@@ -70,14 +89,15 @@ export default function Categories({ icon, text, selectedCategory, setSelectedCa
                                 >
                                     <div className="accordion-body">
                                         {item.subItems.map((subItem, subIndex) => (
-                                            <div key={`${subItem.text}_${subItem.id}`}
+                                            <div id="truncated-text" 
+                                            key={`${subItem.text}_${subItem.id}`}
                                                 style={{ cursor: 'pointer' }}
-                                                className={`list-group-item list-group-item-action py-2 ripple ${subItem.id === selectedCategory ? "active" : ""}`}
+                                                className={`list-group-item list-group-item-action py-2 ripple ${subItem.id === selectedCategory ? "active" : ""} `}
                                                 onClick={() => setSelectedCategory(subItem.id)}
                                             >
                                                 <span className='px-4'>{subItem.icon}</span>
-                                                <span>{subItem.text}</span>
-                                            </div>
+                                                <span title={subItem.text}>{subItem.text}</span>
+                                                </div>
                                         ))}
                                     </div>
                                 </div>
